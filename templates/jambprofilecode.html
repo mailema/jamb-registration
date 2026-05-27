@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jamb profile code</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+            body{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                min-height:100dvh;
+                background:linear-gradient(to top,aliceblue,green);
+          }
+          .container{
+              display:flex;
+              flex-direction:column;
+              justify-content:center;
+              align-items:center;
+              background-color:aliceblue;
+              width:clamp(200px,95vw,700px);
+              height:clamp(200px,50dvh,700px);
+              border-radius:20px;
+              margin-top:10dvh;
+          }
+          input{
+              width:clamp(300px,90vw,500px);
+                height:clamp(60px,8dvh,50px);
+                font-size:clamp(20px,5vw,30px);
+                border-radius:15px;
+                border:1px solid red;
+                outline:none
+          }
+          .pro{
+                width:clamp(100px,50vw,300px);
+                height:clamp(60px,10dvh,60px);
+                margin-top:clamp(20px,3dvh,35px);
+                font-size:clamp(20px,5vw,30px);
+                color:red;
+                box-shadow:0 0 5px red;
+                border-radius:15px;
+                background-color:white;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+            }
+            input:focus{
+                box-shadow:0 0 8px red;
+                border:1px solid red
+            }
+            .home{
+                width:clamp(200px,95vw,700px);
+                display:flex;
+                justify-content:flex-start;
+                padding-left:clamp(20px,4vw,40px); 
+                box-sizing:border-box;
+                font-size:clamp(20px,5vw,30px);
+                margin-top:10px
+            }
+            .fail{
+              width:clamp(300px,90vw,500px);
+                height:clamp(30px,5dvh,40px);
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                color:red;
+                background-color:white;
+            }
+            .succeed{
+              width:clamp(300px,90vw,500px);
+                height:clamp(30px,5dvh,40px);
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                color:green;
+                background-color:white;
+            }
+        </style>
+    </head>
+    <body>
+        {% for category,message in get_flashed_messages(with_categories=True) %}
+        <div class="{{ category }}">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        <form action=" " method="POST">
+        <div class="container">
+            <input type="number" placeholder="Enter your phone number" name="mynumber" required>
+            <button class="pro"><b>Get profile code</b></button>
+        </div>
+        </form>
+        <div class="home">
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>  
+      
+           
+           

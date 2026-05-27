@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jamb registration</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+            body{
+                min-height:100vh;
+                background:linear-gradient(to top,lightgreen,green);
+            }
+            h1{
+                text-align:center; 
+            }
+            .outer{
+                min-height:calc(100vh - 50px);
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+            }
+            .first{
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                border-radius:3vw;
+                width:clamp(200px,96vw,700px);
+                padding-bottom:10px;
+            }
+            .second{
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                border-radius:10px;
+                width:clamp(200px,96vw,700px);
+                padding-bottom:10px
+            }
+            .third{
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                border-radius:10px;
+                width:clamp(200px,96vw,700px);
+                padding-bottom:10px
+            }
+            button{
+              height:clamp(50px,8dvh,80px);
+              width:clamp(100px,30vw,300px);
+              border-radius:3vw;
+              margin-top:20px;
+              font-size:clamp(17px,5vw,30px);
+              box-shadow:0 0 8px red;
+              color:red;
+              border:1px solid red;
+            }
+            select{
+                height:clamp(50px,10dvh,80px);
+                width:clamp(300px,95vw,500px);
+                border-radius:3vw;
+                font-size:clamp(20px,4vw,25px);
+                border-bottom:2px solid red;
+   
+                box-sizing:border-box;
+                padding-right:18px
+            }
+            .course{
+                margin-top:20px;
+                font-size:clamp(20px,5vw,30px)
+            }
+            .institution {
+                font-size:clamp(20px,5vw,30px)
+            }
+            hr{
+                width:100%
+            }
+            .student{
+                font-size:clamp(20px,5vw,30px);
+                color:white;
+                display:flex;
+                flex-direction:row;
+                justify-content:flex-end;
+                width:100vw;
+                padding-right:clamp(20px,4vw,40px);
+                box-sizing:border-box;
+            }
+            h2{
+                font-size:clamp(20px,8vw,40px);
+            }
+            h1{
+                font-size:clamp(25px,8vw,45px)
+            }
+            select:focus{
+                border:2px solid red
+            }
+            .fail{
+              width:clamp(300px,90vw,500px);
+                height:clamp(30px,5dvh,40px);
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                color:red;
+                background-color:white;
+            }
+            .succeed{
+              width:clamp(300px,90vw,500px);
+                height:clamp(30px,5dvh,40px);
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                color:green;
+                background-color:white;
+            }
+            form{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>JAMB REGISTRATION</h1>
+        <hr>
+        <div class="student">
+            <div class="name"><b>welcome {{ myname }}</b></div>
+        </div>
+        <hr>
+        {% for category,message in get_flashed_messages(with_categories=True) %}
+        <div class="{{ category }}">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        <form action="/jambcourses" method="POST">
+         <div class="outer">
+             <div class="first" >
+            <h2>FIRST CHOICE</h2>
+            <div class="institution">Select an institution</div>
+            <select name="institution1">
+                <option value=" "> </option>
+                {% for univ in mylist %}
+                <option value="{{ univ }}">{{ univ }}</option>
+                {% endfor %}
+            </select>
+            <div class="course">Choose the course</div>
+            <select name="course1">
+                <option value=" "> </option>
+                {% for univcourse in courselist %}
+                <option value="{{ univcourse }}">{{ univcourse }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <hr>
+            <div class="second">
+                <h2>SECOND CHOICE</h2>
+                <div class="institution">select an institution</div>
+                <select name="institution2">
+                    <option value=" "> </option>
+                    {% for univ in mylist %}
+                    <option value="{{ univ }}">{{ univ }}</option>
+                    {% endfor %}
+                </select>
+                <div class="course">choose the course</div>
+                <select name="course2">
+                    <option value=" "> </option>
+                    {% for univcourse in courselist %}
+                    <option value="{{ univcourse }}">{{ univcourse }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <hr>
+            <div class="third">
+                <h2>THIRD CHOICE</h2>
+                <div class="institution">select an institution</div>
+                <select name="institution3">
+                    <option value=" "> </option>
+                    {% for univ in mylist %}
+                    <option value="{{ univ }}">{{ univ }}</option>
+                    {% endfor %}
+                </select>
+                <div class="course">choose the course</div>
+                <select name="course3">
+                    <option value=" "> </option>
+                    {% for univcourse in courselist %}
+                    <option value="{{ univcourse }}">{{ univcourse }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button class="submit"><b>save</b></button>
+        </form>
+    </body>
+</html>

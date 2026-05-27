@@ -133,51 +133,49 @@ def slip():
 
 @app.route('/download')
 def download():
-    #regnum='2026' + str(num) + combine
-    myregnum=session.get('regnum')
-    firstinst=session.get('inst1')
-    firstcourse=session.get('crs1')
-    secondinst=session.get('inst2')
-    secondcourse=session.get('crs2')
-    thirdinst=session.get('inst3')
-    thirdcourse=session.get('crs3')
-    fname=session.get('fullname')
-    email=session.get('email')
-    mynumber=session.get('mobile')
-    
-    #folder="/storage/emulated/0/"
-    #new_folder=os.path.join(folder,"Jambfolder")
-    #if not os.path.exists(new_folder):
-        #os.mkdir(new_folder)
-    #else:
-        #os.remove(new_folder)   
-    #file_path=os.path.join(new_folder,"jambslip.txt")
-    phonenum=session.get('mobile')
+    # 1. Fetch text data from session
+    myregnum = session.get('regnum')
+    firstinst = session.get('inst1')
+    firstcourse = session.get('crs1')
+    secondinst = session.get('inst2')
+    secondcourse = session.get('crs2')
+    thirdinst = session.get('inst3')
+    thirdcourse = session.get('crs3')
+    fname = session.get('fullname')
+    email = session.get('email')
+    mynumber = session.get('mobile')
+
+    # 2. CREATE THE SAFE CLOUD PATH DIRECTLY
+    # This bypasses the old broken cookie string completely!
     folder = tempfile.gettempdir()
-    file_name=f"slip_{phonenum}.txt"
-    file_path=os.path.join(folder,file_name)
-    #file_path=session.get('myfile_path')
-    with open(file_path,"w") as file:
-        file.write("\n\n____________________________\n\n")
+    file_name = f"slip_{mynumber}.txt"
+    file_path = os.path.join(folder, file_name)
+
+    # 3. Write to the temporary file
+    with open(file_path, "w") as file:
+        file.write("\n\n_____________________________\n")
         file.write("JAMB SLIP\n")
         file.write(f"Reg number: {myregnum}\n")
         file.write(f"Name: {fname}\n")
-        file.write(f"email: {email}\n")
-        file.write(f"phone number: {mynumber}\n\n")
-        file.write("\n\n____________________________\n\n")
+        file.write(f"Email: {email}\n")
+        file.write(f"phone number: {mynumber}\n")
+        file.write("\n\n_____________________________\n")
         file.write("FIRST CHOICE\n")
         file.write(f"institution: {firstinst}\n")
-        file.write(f"course: {firstcourse}\n\n")
-        file.write("\n\n____________________________\n\n")
+        file.write(f"course: {firstcourse}\n")
+        file.write("\n\n_____________________________\n")
         file.write("SECOND CHOICE\n")
         file.write(f"institution: {secondinst}\n")
-        file.write(f"course: {secondcourse}\n\n")
-        file.write("\n\n____________________________\n\n")
+        file.write(f"course: {secondcourse}\n")
+        file.write("\n\n_____________________________\n")
         file.write("THIRD CHOICE\n")
         file.write(f"institution: {thirdinst}\n")
-        file.write(f"course: {thirdcourse}\n\n")
-        file.write("\n\n____________________________\n\n")
-    return send_file(file_path,as_attachment=True)
+        file.write(f"course: {thirdcourse}\n")
+        file.write("\n\n_____________________________\n")
+
+    # 4. Send the file securely to your mobile browser
+    return send_file(file_path, as_attachment=True)
+
 
 
 

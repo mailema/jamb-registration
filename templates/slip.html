@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>slip</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+            body{
+                min-height:100dvh;
+                background-color:lavender;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+            }
+            .container{
+                background-color:white;
+                width:clamp(200px,100vw,800px);
+                padding-left:10px;
+                padding-right:10px;
+                box-sizing:border-box;
+            }
+            .info{
+                place-items:center;
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            }
+            .courses{
+                place-items:center;
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            }
+            p{
+                font-size:clamp(20px,4vw,25px);
+            }
+            hr{
+                width:clamp(200px,92vw,800px);
+            }
+            .download{
+                width:clamp(200px,100vw,800px);
+                margin-bottom:5px;
+                padding-right:15px;
+                display:flex;
+                justify-content:flex-end;
+            } 
+            span{
+                font-size:clamp(18px,4vw,25px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="download"><a href="/download"><b>Download ⬇️</b></a></div>
+        <div class="container">
+            <div class="info">
+                <h1>YOUR SLIP</h1>
+                <p><b>Reg number: {{ regnum }}</b></p>
+                <span>Name: {{ fname }}</span>
+                <span>Email: {{ email }}</span>
+                <span>Mobile: {{ mynumber }}</span>
+                <p></p>
+                <hr>
+            </div>
+            <div class="courses">
+                <div class="first">
+                    <h2>FIRST CHOICE</h2>
+                    <p><b>institution:</b> {{ firstinst }}</p>
+                    <p><b>course:</b> {{ firstcourse }}</p>
+                </div>
+                
+                <div class="second">
+                    <h2>SECOND CHOICE</h2>
+                    <p><b>institution:</b> {{ secondinst }}</p>
+                    <p><b>course:</b> {{ secondcourse }}</p>
+                </div>
+                <div class="third">
+                    <h2>THIRD CHOICE</h2>
+                    <p><b>institution:</b> {{ thirdinst }}</p>
+                    <p><b>course:</b> {{ thirdcourse }}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

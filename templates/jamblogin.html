@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jamb registration</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+            body{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                min-height:100dvh;
+                background:linear-gradient(to top,aliceblue,green);
+            }
+            select{
+                height:clamp(40px,10dvh,80px);
+                width:clamp(300px,95vw,600px);
+                border-radius:3vw
+            }
+            label{
+                display:block;
+                margin-top:10px;
+                font-size:clamp(20px,6vw,40px);
+                margin-left:clamp(10px,3vw,30px);
+                
+            }
+            input{
+                width:clamp(300px,90vw,500px);
+                height:clamp(50px,7dvh,50px);
+                font-size:clamp(20px,5vw,30px);
+                border-radius:15px;
+                border:none;
+                outline:none;
+                border-bottom:2px solid red
+            }
+            .container{
+                padding:clamp(10px,3vw,30px);
+                border-radius:3vw
+            }
+            .procd{
+                width:clamp(300px,90vw,500px);
+                display:flex;
+                flex-direction:row;
+                justify-content:flex-end;
+                box-sizing:border-box;
+                margin-top:3dvh;
+                font-size:clamp(17px,4vw,20px);
+            }
+            form{
+               display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center; 
+            }
+            .submit{
+                width:clamp(100px,50vw,300px);
+                height:clamp(50px,7dvh,60px);
+                margin-top:clamp(20px,3dvh,35px);
+                font-size:clamp(20px,5vw,30px);
+                color:red;
+                box-shadow:0 0 5px red;
+                border-radius:15px;  
+            }
+            input:focus{
+                border:1px solid red;
+                box-shadow:0 0 8px red
+            }
+            .fail{
+              width:clamp(300px,90vw,500px);
+                height:clamp(30px,5dvh,40px);
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                color:red;
+                background-color:white;
+            }
+            .succeed{
+              width:clamp(300px,90vw,500px);
+                height:clamp(30px,5dvh,40px);
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                color:green;
+                background-color:white;
+            }
+        </style>
+    </head>
+    <body>
+        {% for category,message in get_flashed_messages(with_categories=True) %}
+        <div class="{{ category }}">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        <div class="header">
+            <h1>JAMB REGISTR..</h1>
+        </div>
+        <div class="container">
+            <form action=" " method="POST">
+                <label><b>fullname</b></label>
+                <input type="text" name="fullname" required >
+                <label><b>Email</b></label>
+                <input type="email" name="email" required >
+                <label><b>Mobile</b></label>
+                <input type="tel" name="mobile" required >
+                <label><b>Profile Code</b></label>
+                <input type="number" name="code" required >
+                <button class="submit"><b>register</b></button>
+            </form>
+            <div class="procd">
+                <a href="/jambcodeengine">Don't have a profile code?</a>
+            </div>
+        </div>
+        <div></div>
+    </body>
+  </html>

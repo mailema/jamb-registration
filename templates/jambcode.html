@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jamb profile code</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <style>
+            body{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                min-height:100dvh;
+                background:linear-gradient(to top,aliceblue,green);
+          }
+          .container{
+              display:flex;
+              flex-direction:column;
+              justify-content:center;
+              align-items:center;
+              background-color:aliceblue;
+              width:clamp(200px,95vw,700px);
+              height:clamp(200px,50dvh,700px);
+              border-radius:20px;
+              gap:clamp(30px,5dvh,50px)
+          }
+            .home{
+                width:clamp(200px,95vw,700px);
+                display:flex;
+                justify-content:flex-start;
+                padding-left:clamp(20px,4vw,40px); 
+                box-sizing:border-box;
+                font-size:clamp(20px,5vw,30px);
+                margin-top:10px
+            }
+            .description, .code{
+                font-size:clamp(20px,5vw,30px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="description"><b>Your profile code</b></div>
+            <div class="code"><b>{{ pcode }}</b></div>
+        </div>
+        <div class="home">
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>  
+      
+           
+           

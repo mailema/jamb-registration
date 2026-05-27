@@ -153,7 +153,7 @@ def download():
         #os.remove(new_folder)   
     #file_path=os.path.join(new_folder,"jambslip.txt")
     phonenum=session.get('mobile')
-    folder="/storage/emulated/0/Download"
+    folder = tempfile.gettempdir()
     file_name=f"slip_{phonenum}.txt"
     session['myfile_path']=os.path.join(folder,file_name)
     file_path=session.get('myfile_path')

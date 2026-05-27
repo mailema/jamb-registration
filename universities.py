@@ -5,6 +5,7 @@ import re
 import random
 import os
 import datetime
+import tempfile
 
 mylist=[]
 courselist=[]
@@ -50,7 +51,7 @@ def jamblogin():
         phonenum=session.get('mobile')
         profilecode=request.form['code']
         
-        folder="/storage/emulated/0/Download"
+        folder = tempfile.gettempdir()
         file_name=f"slip_{phonenum}.txt"
         myfile_checker=os.path.join(folder,file_name)
         

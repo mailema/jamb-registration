@@ -1,2 +1,8 @@
 flask
 gunicorn
+requests
+bs4
+random
+re
+os
+datetime

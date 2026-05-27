@@ -155,8 +155,8 @@ def download():
     phonenum=session.get('mobile')
     folder = tempfile.gettempdir()
     file_name=f"slip_{phonenum}.txt"
-    session['myfile_path']=os.path.join(folder,file_name)
-    file_path=session.get('myfile_path')
+    file_path=os.path.join(folder,file_name)
+    #file_path=session.get('myfile_path')
     with open(file_path,"w") as file:
         file.write("\n\n____________________________\n\n")
         file.write("JAMB SLIP\n")
